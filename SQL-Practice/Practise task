@@ -1,1 +1,116 @@
-
+ABC Finance is creating a database to manage its departments, employees and projects.							
+							
+You are responsible for designing the database and generating a report for management.							
+							
+							
+							
+Task 1 — Database							
+							
+Create a database named:							
+							
+ABC_Finance_DB							
+							
+Use the database.							
+							
+							
+							
+Task 2 — Create Tables							
+							
+Table 1 — departments							
+							
+Create a table named departments with the following requirements:							
+							
+Column	Requirement						
+department_id	Integer, Primary Key						
+department_name	VARCHAR(30), NOT NULL, UNIQUE						
+							
+							
+Table 2 — employees							
+							
+Create a table named employees.							
+							
+Column	Requirement						
+emp_id	Integer, Primary Key						
+emp_name	VARCHAR(50), NOT NULL						
+department_id	Integer, Foreign Key → departments.department_id (ON UPDATE CASCADE, ON DELETE CASCADE)						
+manager_id	Integer, NULL allowed						
+salary	DECIMAL(10,2), salary must be 30000 or above						
+joining_date	DATE, NOT NULL						
+bonus	DECIMAL(10,2), NULL allowed						
+status	VARCHAR(15), Default = 'Active'						
+							
+							
+Table 3 — projects							
+							
+Create a table named projects.							
+							
+Column	Requirement						
+project_id	Integer, Primary Key						
+project_name	VARCHAR(50), NOT NULL						
+department_id	Integer, Foreign Key → departments.department_id						
+budget	DECIMAL(12,2), must be greater than 0						
+							
+							
+Task 3 — Insert Data							
+							
+Departments							
+							
+department_id	department_name						
+1	HR						
+2	IT						
+3	Finance						
+4	Operations						
+							
+							
+Employees							
+							
+emp_id	emp_name	department_id	manager_id	salary	joining_date	bonus	status
+101	Arun	1	NULL	45000	10-01-2022	5000	Active
+102	Priya	2	104	60000	15-03-2021	NULL	Active
+103	Meera	2	104	55000	20-02-2023	3000	Inactive
+104	John	3	NULL	70000	12-07-2020	10000	Active
+105	Rahul	1	101	50000	25-11-2021	NULL	Active
+106	Neha	4	107	48000	18-08-2022	2500	Active
+107	David	4	NULL	52000	30-06-2021	NULL	Active
+							
+							
+Projects							
+							
+project_id	project_name	department_id	budget				
+1	Payroll System	1	250000				
+2	Mobile App	2	800000				
+3	Audit Automation	3	600000				
+4	Operations Dashboard	4	350000				
+							
+							
+Task 4 — DML							
+							
+Meera has rejoined the company.							
+							
+Update her status to Active.							
+							
+							
+							
+Task 5 — Business Query							
+							
+The Finance Director wants a report.							
+							
+Display:							
+							
+Employee Name							
+Department Name							
+Project Name							
+Salary							
+Bonus (if NULL, display 0)							
+Department Average Salary							
+							
+Show only employees who satisfy all of the following:							
+							
+1. Employee is Active.							
+2. Employee earns more than the average salary of their own department.							
+3. Department has at least one project with a budget greater than ₹500,000.							
+							
+Sort the result by:							
+							
+1. Department Name							
+2. Salary (Highest first)							
