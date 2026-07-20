@@ -1,0 +1,171 @@
+Task 1 — Create Database (DDL)							
+							
+Create a database named							
+							
+ABC_RetailBank_DB							
+							
+							
+							
+Task 2 — Create Tables (DDL)							
+							
+Table 1 : Departments							
+							
+Column	Data Type	Constraints					
+department_id	INT	Primary Key					
+department_name	VARCHAR(40)	NOT NULL, UNIQUE					
+location	VARCHAR(30)	NOT NULL					
+							
+							
+Table 2 : Employees							
+							
+Column	Data Type	Constraints					
+emp_id	INT	Primary Key					
+emp_name	VARCHAR(50)	NOT NULL					
+department_id	INT	Foreign Key					
+manager_id	INT	NULL allowed					
+salary	DECIMAL(10,2)	CHECK >=30000					
+joining_date	DATE	NOT NULL					
+bonus	DECIMAL(10,2)	NULL allowed					
+status	VARCHAR(15)	DEFAULT 'Active'					
+							
+Foreign Key:							
+							
+ON UPDATE CASCADE							
+ON DELETE CASCADE							
+							
+							
+							
+Table 3 : Projects							
+							
+Column	Data Type	Constraints					
+project_id	INT	Primary Key					
+project_name	VARCHAR(60)	NOT NULL					
+department_id	INT	Foreign Key					
+budget	DECIMAL(12,2)	CHECK >0					
+							
+							
+Task 3 — Insert Data (DML)							
+							
+Departments							
+							
+ID	Department	Location					
+1	HR	Mumbai					
+2	IT	Bengaluru					
+3	Finance	Pune					
+4	Operations	Hyderabad					
+5	Risk	Chennai					
+							
+							
+Employees							
+							
+ID	Name	Dept	Salary	Joining Date			
+101	Arun	1	45000	10-01-2022			
+102	Priya	2	72000	15-03-2021			
+103	Meera	2	68000	20-02-2023			
+104	John	3	85000	12-07-2020			
+105	Rahul	1	52000	25-11-2021			
+106	Neha	4	49000	18-08-2022			
+107	David	4	54000	30-06-2021			
+108	Sara	5	76000	05-10-2022			
+							
+							
+Projects							
+							
+ID	Project	Dept	Budget				
+1	Payroll Upgrade	1	250000				
+2	Mobile Banking App	2	1200000				
+3	AML Automation	3	850000				
+4	Operations Dashboard	4	350000				
+5	Risk Engine	5	950000				
+							
+							
+Task 4 — Update Data (DML)							
+							
+Perform the following updates.							
+							
+1							
+							
+Employee Meera							
+							
+Status							
+							
+Inactive							
+							
+							
+							
+2							
+							
+Assign managers.							
+							
+Employee	Manager						
+Priya	John						
+Meera	John						
+Rahul	Arun						
+Neha	David						
+Sara	John						
+							
+							
+3							
+							
+Update bonus.							
+							
+Employee	Bonus						
+Arun	5000						
+John	12000						
+Neha	3000						
+Sara	7000						
+							
+Use one UPDATE statement with CASE.							
+							
+							
+							
+Task 5 — ALTER TABLE							
+							
+Add a new column							
+							
+email							
+							
+Type							
+							
+VARCHAR(100)							
+							
+Then update emails for any three employees.							
+							
+							
+							
+Task 6 — TCL							
+							
+1. Start a transaction.							
+2. Increase Risk department salaries by 10%.							
+3. Create a SAVEPOINT.							
+4. Decrease Operations salaries by 5%.							
+5. Rollback to the SAVEPOINT.							
+6. Commit.							
+							
+							
+							
+Task 7 — Main Business Question (DQL)							
+							
+Generate a report with the following columns:							
+							
+Employee Name							
+Department Name							
+Project Name							
+Salary							
+Bonus							
+Department Average Salary							
+Company Salary Rank (Highest salary = Rank 1)							
+							
+Conditions							
+							
+Include only Active employees.							
+							
+Display employees who satisfy both:							
+							
+1. Salary is greater than the average salary of their own department.							
+2. Department budget is greater than the overall average project budget.							
+							
+Sort by:							
+							
+Salary DESC							
+Employee Name ASC							
